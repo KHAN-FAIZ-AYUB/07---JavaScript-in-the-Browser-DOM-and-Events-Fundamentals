@@ -20,11 +20,22 @@ document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
   console.log(guess, typeof guess);
 
+  //   When there is no input
+
   if (!guess) {
     document.querySelector('.message').textContent = '⛔️ No number!';
-  } else if (guess === secretNumber) {
+  }
+
+  //   whan input is correct
+  else if (guess === secretNumber) {
     document.querySelector('.message').textContent = 'Correct Number! 🎉';
-  } else if (guess > secretNumber) {
+
+    document.querySelector('body').style.backgroundColor = '#60b347';
+    document.querySelector('.number').style.width = '30rem';
+  }
+
+  //   When input is big
+  else if (guess > secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'NUmber is Big ';
       score--;
@@ -32,8 +43,12 @@ document.querySelector('.check').addEventListener('click', function () {
     } else {
       document.querySelector('.message').textContent = 'You lost the game';
       document.querySelector('.score').textContent = 0;
+      document.querySelector('body').style.backgroundColor = 'red';
     }
-  } else if (guess < secretNumber) {
+  }
+
+  //   when input is small
+  else if (guess < secretNumber) {
     if (score > 1) {
       document.querySelector('.message').textContent = 'Number is small';
       score--;
@@ -41,6 +56,7 @@ document.querySelector('.check').addEventListener('click', function () {
     } else {
       document.querySelector('.message').textContent = 'You lost the Game';
       document.querySelector('.score').textContent = 0;
+      document.querySelector('body').style.backgroundColor = 'red;';
     }
   }
 });
